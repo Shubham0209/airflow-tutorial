@@ -39,7 +39,7 @@ dag = DAG(
     schedule_interval=schedule_interval
     )
 
-## Task 1: check that the github archive data has a dated table created for that date
+## Task 1: check that the github archive data has a table created for specified date
 # To test this task, run this command:
 # docker-compose -f docker-compose-gcloud.yml run --rm webserver airflow test bigquery_github_trends bq_check_githubarchive_day 2018-12-01
 t1 = BigQueryCheckOperator(
@@ -78,7 +78,7 @@ t2 = BigQueryCheckOperator(
         dag=dag
     )
 
-## Task 3: create a github daily metrics partition table
+## Task 3: create a github daily metrics partition table. This creates a new table (with name github_daily_metrics) under your Big query project having data for the specified date. 
 t3 = BigQueryOperator(
         task_id='bq_write_to_github_daily_metrics',    
         sql='''
@@ -112,7 +112,7 @@ t3 = BigQueryOperator(
         dag=dag
     )
 
-## Task 4: aggregate past github events to daily partition table
+## Task 4: aggregate past github events to daily partition table. Perform same task as above just provides an aggreagrate info. creates a new table (with name github_agg) under your Big query project
 t4 = BigQueryOperator(
         task_id='bq_write_to_github_agg',    
         sql='''
@@ -157,7 +157,7 @@ t4 = BigQueryOperator(
         dag=dag
     )
 
-# Task 5: aggregate hacker news data to a daily partition table
+# Task 5: aggregate hacker news data to a daily partition table. creates a new table (with name hackernews_agg) under your Big query project
 t5 = BigQueryOperator(
     task_id='bq_write_to_hackernews_agg',    
     sql='''
