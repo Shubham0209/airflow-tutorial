@@ -38,7 +38,7 @@ Create the service account. Make sure the JSON private key has Editor's rights:
 
 ![console](img/create_service_account.png?raw=true)
 
-Also, the service account needs to have permission to access the GCS bucket and Bigquery dataset.
+Click on create key and a JSON file will be downloaded. Also, the service account needs to have permission to access the GCS bucket and Bigquery dataset.
 
 ### Airflow Connection
 
