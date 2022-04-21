@@ -41,8 +41,9 @@ Create the service account. Make sure the JSON private key has Editor's rights:
 Click on create key and a JSON file will be downloaded. Also, the service account needs to have permission to access the GCS bucket and Bigquery dataset.
 
 ### Airflow Connection
+Now you have to activate the corresponding docker container so run the command `bash run_gcloud_example.sh`. You shold be able to se the airflow ui on loaclhost:8080.
 
-After having the GCP key, you need to create a connection in `Admin -> Connections` using your key.
+Now place the downloaded key into `examples\gcloud-example\dags\support\keys` folder. Now you need to create a connection in `Admin -> Connections -> Create`
 
 In Airflow you need to define the *my_gcp_conn* named connection to your project:
 
@@ -53,7 +54,7 @@ minimum scope of *https://www.googleapis.com/auth/cloud-platform*
 
 ### Enter the config variables
 
-After connection has been set up, you can go to the [bigquery_github_trends DAG](../../gcloud-example/bigquery_github/bigquery_github_trends.py), and enter the value of config variables:
+After connection has been set up, you can go to the [bigquery_github_trends DAG](../../gcloud-example/bigquery_github/config/variables.json), and enter the value of config variables:
 - __BQ_PROJECT__: the bigquery project you are working on
 - __BQ_DATASET__: the bigquery dataset you are working on
 
