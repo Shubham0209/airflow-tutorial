@@ -54,7 +54,7 @@ minimum scope of *https://www.googleapis.com/auth/cloud-platform*
 
 ### Enter the config variables
 
-After connection has been set up, you can go to the [bigquery_github_trends DAG](../../gcloud-example/bigquery_github/config/variables.json), and enter the value of config variables:
+After connection has been set up, you can go to the [bigquery_github_trends DAG](https://github.com/Shubham0209/airflow-tutorial/blob/main/examples/gcloud-example/dags/bigquery_github/config/variables.json), and enter the value of config variables:
 - __BQ_PROJECT__: the bigquery project you are working on
 - __BQ_DATASET__: the bigquery dataset you are working on
 
