@@ -7,12 +7,15 @@ from airflow.contrib.operators.bigquery_operator import BigQueryOperator
 from airflow.contrib.operators.bigquery_check_operator import BigQueryCheckOperator
 
 
-# Config variables
+# Config variables. All these are fetched from variables.json file so make sure to edit that file.
 dag_config = Variable.get("bigquery_github_trends_variables", deserialize_json=True)
-BQ_CONN_ID = dag_config["bq_conn_id"]
-BQ_PROJECT = dag_config["bq_project"]
-BQ_DATASET = dag_config["bq_dataset"]
-
+BQ_CONN_ID = dag_config["bq_conn_id"] # id as specified in airflow UI Admin -> Connections -> Create i.e Conn id
+BQ_PROJECT = dag_config["bq_project"] # project name as specified in GCP's 'big query' tool. It's usually the same as your GCP project name id.
+BQ_DATASET = dag_config["bq_dataset"] # Dataset ID as specified into your big query's project dataset. 
+'''
+If BQ_DATASET is not added, click onto drop down icon beside your project name in big query tool and select craete new dataset 
+and specify name as shubham. Then the value for this field will aslo be shubham.
+'''
 default_args = {
     'owner': 'airflow',
     'depends_on_past': True,    
